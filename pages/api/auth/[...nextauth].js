@@ -12,6 +12,7 @@ export default NextAuth({
   session: {
     strategy: 'jwt',
   },
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
@@ -23,6 +24,10 @@ export default NextAuth({
       return token;
     },
     async session({ session, token }) {
+      if (token) {
+        // for the github and the google providers
+        session.user._id = token._id;
+      }
       if (token?._id) session.user._id = token._id;
       if (token?.isAdmin) session.user.isAdmin = token.isAdmin;
       return session;

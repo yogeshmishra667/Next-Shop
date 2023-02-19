@@ -70,5 +70,5 @@ input:focus {
 }
 
 a {
-  @apply text-blue-500;
+  @apply text-blue-800;
 }

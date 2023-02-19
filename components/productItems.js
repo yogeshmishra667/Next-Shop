@@ -1,15 +1,18 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const ProductItem = ({ product, addToCartHandler }) => {
   return (
     <div className="w-80 bg-white shadow rounded">
       <div className="h-48 w-full flex flex-col justify-between p-4 bg-cover bg-center items-center">
         <Link href={`/product/${product.slug}`}>
-          <img
+          <Image
             src={product.image}
             alt={product.name}
             className="rounded shadow ImgSize"
-          />
+            width={400}
+            height={195}
+          ></Image>
         </Link>
 
         <div
@@ -35,7 +38,7 @@ const ProductItem = ({ product, addToCartHandler }) => {
         <p className="text-center text-gray-800 mt-1">{product.brand}</p>
         <p className="text-center text-gray-800 mt-1">₹{product.price}</p>
         <button
-          className={`py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50 mt-4 w-full flex items-center justify-center ${
+          className={`py-2 px-4 bg-blue-700 text-white rounded hover:bg-blue-600 active:bg-blue-800 disabled:opacity-50 mt-4 w-full flex items-center justify-center ${
             product.countInStock === 0 && 'cursor-not-allowed'
           }`}
           onClick={() => addToCartHandler(product)}

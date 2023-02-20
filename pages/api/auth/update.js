@@ -1,6 +1,6 @@
 import { getSession } from 'next-auth/react';
 import bcryptjs from 'bcryptjs';
-import User from '../../../models/User';
+import User from '../../../models/user';
 import db from '../../../utils/db';
 
 async function handler(req, res) {
